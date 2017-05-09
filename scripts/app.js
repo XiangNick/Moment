@@ -2,11 +2,35 @@
 * @Author: xiangnick
 * @Date:   2017-05-09 10:39:11
 * @Last Modified by:   xiangnick
-* @Last Modified time: 2017-05-09 17:01:24
+* @Last Modified time: 2017-05-09 21:13:44
 */
-
 var Yike = angular.module('Yike',['ngRoute','Controllers']);
 
+Yike.config(['$routeProvider',function($routeProvider){
+	$routeProvider.when('/today',{
+		templateUrl:"./views/today.html",
+		controller:"TodayController"
+	})
+	.when('/older',{
+		templateUrl:"./views/older.html",
+		controller:"OlderController"
+	})
+	.when('/author',{
+
+	})
+	.when('/category',{
+
+	})
+	.when('/favourite',{
+
+	})
+	.when('/settings',{
+
+	})
+	.otherwise({
+		redirectTo:'/today'
+	});
+}]);
 Yike.run(['$rootScope',function($rootScope){
 
 	$rootScope.collapsed = false;

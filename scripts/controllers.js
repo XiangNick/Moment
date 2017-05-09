@@ -2,7 +2,7 @@
 * @Author: xiangnick
 * @Date:   2017-05-09 11:17:44
 * @Last Modified by:   xiangnick
-* @Last Modified time: 2017-05-09 16:44:11
+* @Last Modified time: 2017-05-09 23:38:37
 */
 
 angular.module('Controllers',[])
@@ -17,4 +17,17 @@ angular.module('Controllers',[])
 		{url: '#/favourite', text: '我的喜欢', icon: 'icon-heart'},
 		{url: '#/settings', text: '设置', icon: 'icon-cog'}
 	];
+}])
+//今日一刻
+.controller('TodayController',['$scope','$http',function($scope,$http){
+	$http({
+		url:'./api/today.php',
+		method:'get'
+	}).success(function(data){
+		$scope.data = data;
+	});
+}])
+//往期内容
+.controller('OlderController',['$scope',function($scope){
+
 }])
