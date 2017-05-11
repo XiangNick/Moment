@@ -2,7 +2,7 @@
 * @Author: xiangnick
 * @Date:   2017-05-09 11:17:44
 * @Last Modified by:   xiangnick
-* @Last Modified time: 2017-05-09 23:38:37
+* @Last Modified time: 2017-05-10 09:59:31
 */
 
 angular.module('Controllers',[])
@@ -19,15 +19,33 @@ angular.module('Controllers',[])
 	];
 }])
 //今日一刻
-.controller('TodayController',['$scope','$http',function($scope,$http){
+.controller('TodayController',['$scope','$http','$filter','$rootScope',function($scope,$http,$filter,$rootScope){
+	var today = $filter('date')(new Date,'yyyy-MM-dd');
+	$rootScope.loaded = false;
+	$rootScope.title = "今日一刻";
 	$http({
 		url:'./api/today.php',
-		method:'get'
+		method:'get',
+		params:{today:today}
 	}).success(function(data){
+		$rootScope.loaded = true;
 		$scope.data = data;
 	});
 }])
 //往期内容
 .controller('OlderController',['$scope',function($scope){
 
+}])
+//热门作者
+.controller('AuthorController',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+	$rootScope.title = "热门作者";
+	$rootScope.loaded = false;
+	$http({
+		url:'./api/author.php',
+		method:'get'
+	}).success(function(data){
+		$rootScope.loaded = true;
+		$scope.rec = data.rec;
+		$scope.all = data.all;
+	});
 }])

@@ -2,7 +2,7 @@
 * @Author: xiangnick
 * @Date:   2017-05-09 10:39:11
 * @Last Modified by:   xiangnick
-* @Last Modified time: 2017-05-09 21:13:44
+* @Last Modified time: 2017-05-10 09:26:37
 */
 var Yike = angular.module('Yike',['ngRoute','Controllers']);
 
@@ -16,7 +16,8 @@ Yike.config(['$routeProvider',function($routeProvider){
 		controller:"OlderController"
 	})
 	.when('/author',{
-
+		templateUrl:"./views/author.html",
+		controller:"AuthorController"
 	})
 	.when('/category',{
 
